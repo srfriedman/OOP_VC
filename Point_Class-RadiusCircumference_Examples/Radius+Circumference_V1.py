@@ -66,13 +66,15 @@ def center(a, b, c):
     center = Point(center_x, center_y)
     return center
 
+def main():
+    p = Point(1, 4)
+    q = Point(4, 1)
+    r = Point(-2, 1)
 
-p = Point(1, 4)
-q = Point(4, 1)
-r = Point(-2, 1)
+    print(p)
+    print(p.midpoint(q))
+    print(radius(p, q, r))
+    print(center(p, q, r))
 
-print(p)
-print(p.midpoint(q))
-print(radius(p, q, r))
-print(center(p, q, r))
+main()
 
