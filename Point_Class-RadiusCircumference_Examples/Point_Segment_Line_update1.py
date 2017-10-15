@@ -1,5 +1,4 @@
 import math
-import turtle
 
 
 class Point:
@@ -14,9 +13,9 @@ class Point:
     def distance(self, other_point):
         """ Calculate the distance between a point, self, and another point. """
 
-        xdiff = (self.x - other_point.x) ** 2
-        ydiff = (self.y - other_point.y) ** 2
-        distance = math.sqrt(xdiff + ydiff)
+        x_diff_square = (self.x - other_point.x) ** 2
+        y_diff_square = (self.y - other_point.y) ** 2
+        distance = math.sqrt(x_diff_square + y_diff_square)
         return distance
 
     def __str__(self):
@@ -30,6 +29,7 @@ class Point:
          executed inside of a tuple. """
 
         return self.__str__()
+
 
 class Line:
     """ Line class for an object, line, defined by its slope and y-intercept. """
@@ -79,7 +79,7 @@ class Line:
         """ When a programmer changes the meaning of a special method we say that we override the method.
         Note also that the str type converter function uses whatever __str__ method we provide."""
 
-        return "slope=" + str(self.slope) + ", y_intersect=" + str(self.y_intercept)
+        return "slope=" + str(self.slope) + ", y_intercept=" + str(self.y_intercept)
 
 
 class Segment:
@@ -96,7 +96,7 @@ class Segment:
         return self.point_a.distance(self.point_b)
 
     def line(self):
-        """ Transforms a segment into a line by deducting slope and y intersect from coordinates of origin and destination"""
+        """ Transforms a segment into a line. """
 
         slope = (self.point_b.y - self.point_a.y) / (self.point_b.x - self.point_a.x)
         y_intercept = self.point_a.y - slope * self.point_a.x
@@ -104,12 +104,14 @@ class Segment:
 
     def midpoint(self):
         """ Calculates the midpoint on a line segment. """
+
         return Point((self.point_b.x + self.point_a.x) / 2, (self.point_b.y + self.point_a.y) / 2)
 
     def bisect(self):
-        """ Creates a line bisecting the original line at the midpoint. """
+        """ Creates a line bisecting the original segment at the midpoint. """
 
         return self.line().perpendicular(self.midpoint())
+
 
 def main():
     p1 = Point(1, 4)
@@ -123,10 +125,11 @@ def main():
     lp2 = s2.bisect()
 
     center = lp1.intersect(lp2)
-    ### See "Equation of a Circle from 3 Points (2 dimensions)"
-    ### by http://paulbourke.net/geometry/circlesphere/
+    # See "Equation of a Circle from 3 Points (2 dimensions)"
+    # by http://paulbourke.net/geometry/circlesphere/
 
     radius = center.distance(p1)
     print("radius = ", radius, "\n" "center is located at: ", center)
+
 
 main()
