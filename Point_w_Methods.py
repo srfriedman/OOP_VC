@@ -15,6 +15,10 @@ class Point:
     def distanceFromOrigin(self):
         return ((self.x ** 2) + (self.y ** 2)) ** 0.5
 
+    def distance_from_point(self, a):
+
+
+
 
 p = Point(7, 6)
 print(p.getX())
