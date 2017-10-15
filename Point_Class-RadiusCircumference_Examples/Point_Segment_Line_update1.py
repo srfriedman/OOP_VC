@@ -123,6 +123,9 @@ def main():
     lp2 = s2.bisect()
 
     center = lp1.intersect(lp2)
+    ### See "Equation of a Circle from 3 Points (2 dimensions)"
+    ### by http://paulbourke.net/geometry/circlesphere/
+
     radius = center.distance(p1)
     print("radius = ", radius, "\n" "center is located at: ", center)
 
